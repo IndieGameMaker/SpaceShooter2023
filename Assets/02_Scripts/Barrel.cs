@@ -5,6 +5,7 @@ using UnityEngine;
 public class Barrel : MonoBehaviour
 {
     private int hitCount;
+    public GameObject expEffect;
 
     void OnCollisionEnter(Collision coll)
     {
@@ -20,5 +21,7 @@ public class Barrel : MonoBehaviour
     void ExpBarrel()
     {
         GetComponent<Rigidbody>().AddForce(Vector3.up * 20000.0f);
+        // Explosion Effect
+        Instantiate(expEffect, transform.position, Quaternion.identity);
     }
 }
