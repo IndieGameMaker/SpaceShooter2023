@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
+    // A PC 100f , B PC 50f
     void Update()
     {
         float h = Input.GetAxis("Horizontal"); // A, D , Left Arrow, Right Arrow // -1.0f ~ 0.0f ~ +1.0f
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
         // 방향벡터를 연산 
         Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
-        tr.Translate(moveDir.normalized * 0.1f);
+        tr.Translate(moveDir.normalized * Time.deltaTime * 5.0f);
 
         //tr.Translate(Vector3.forward * 0.1f * v);
         //tr.Translate(Vector3.right * 0.1f * h);
