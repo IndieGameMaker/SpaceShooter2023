@@ -6,10 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     private Transform tr;
 
+    [SerializeField]
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
         tr = GetComponent<Transform>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
