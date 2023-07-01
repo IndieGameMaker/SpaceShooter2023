@@ -21,8 +21,12 @@ public class PlayerController : MonoBehaviour
         //tr.position += new Vector3(0, 0, 0.1f); // tr.position = tr.position + new Vector3(0, 0, 0.1f);
         //tr.position += Vector3.forward * 0.1f;
 
-        tr.Translate(Vector3.forward * 0.1f * v);
-        tr.Translate(Vector3.right * 0.1f * h);
+        // 방향벡터를 연산 
+        Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
+        tr.Translate(moveDir.normalized * 0.1f);
+
+        //tr.Translate(Vector3.forward * 0.1f * v);
+        //tr.Translate(Vector3.right * 0.1f * h);
 
         Debug.Log("h=" + h);
         Debug.Log("v=" + v);
