@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Animator anim;
 
+    public float moveSpeed = 1.0f;
+    public float turnSpeed = 100.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +28,11 @@ public class PlayerController : MonoBehaviour
 
         // 방향벡터를 연산 
         Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
-        tr.Translate(moveDir.normalized * Time.deltaTime * 5.0f);
+        tr.Translate(moveDir.normalized * Time.deltaTime * moveSpeed);
+
+        // 회전처리
+        float r = Input.GetAxis("Mouse X");
+        tr.Rotate(Vector3.up * Time.deltaTime * r * turnSpeed);
 
         // 애니메이션 처리
         anim.SetFloat("h", h);
