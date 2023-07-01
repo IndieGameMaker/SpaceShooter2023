@@ -23,17 +23,18 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxis("Horizontal"); // A, D , Left Arrow, Right Arrow // -1.0f ~ 0.0f ~ +1.0f
         float v = Input.GetAxis("Vertical"); // W, S, Up, Down // -1.0f ~ 0.0f ~ +1.0f
 
-        //tr.position += new Vector3(0, 0, 0.1f); // tr.position = tr.position + new Vector3(0, 0, 0.1f);
-        //tr.position += Vector3.forward * 0.1f;
-
         // 방향벡터를 연산 
         Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
         tr.Translate(moveDir.normalized * Time.deltaTime * 5.0f);
 
-        //tr.Translate(Vector3.forward * 0.1f * v);
-        //tr.Translate(Vector3.right * 0.1f * h);
-
-        Debug.Log("h=" + h);
-        Debug.Log("v=" + v);
+        // 애니메이션 처리
+        if (v >= 0.1f)
+        {
+            anim.SetBool("IsForward", true);
+        }
+        if (v <= -0.1f)
+        {
+            anim.SetBool("IsForward", false);
+        }
     }
 }
