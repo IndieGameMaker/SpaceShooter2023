@@ -28,13 +28,7 @@ public class PlayerController : MonoBehaviour
         tr.Translate(moveDir.normalized * Time.deltaTime * 5.0f);
 
         // 애니메이션 처리
-        if (v >= 0.1f)
-        {
-            anim.SetBool("IsForward", true);
-        }
-        if (v <= -0.1f)
-        {
-            anim.SetBool("IsForward", false);
-        }
+        anim.SetFloat("h", h);
+        anim.SetFloat("v", v);
     }
 }
