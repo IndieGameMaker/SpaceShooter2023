@@ -22,6 +22,9 @@ public class Barrel : MonoBehaviour
     {
         GetComponent<Rigidbody>().AddForce(Vector3.up * 20000.0f);
         // Explosion Effect
-        Instantiate(expEffect, transform.position, Quaternion.identity);
+        GameObject effect = Instantiate(expEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 2.5f);
+
+        Destroy(this.gameObject, 3.0f);
     }
 }
